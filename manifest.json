@@ -1,0 +1,48 @@
+{
+    "manifest_version": 3,
+    "name": "WoW.Fast",
+    "version": "1.0",
+    "description": "Switch from R.io, WCL & WoWProgress in a click for a character",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "host_permissions": [
+      "*://*.wowprogress.com/character*",
+      "*://raider.io/characters*",
+      "*://www.warcraftlogs.com/character*"
+    ],
+    "content_scripts": [
+      {
+        "matches": [
+          "*://www.wowprogress.com/character*",
+          "*://raider.io/characters*",
+          "*://www.warcraftlogs.com/character*"
+        ],
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "rio.png",
+          "wlog.png",
+          "wowprogress.png"
+        ],
+        "matches": [
+          "https://www.wowprogress.com/*",
+          "https://raider.io/*",
+          "https://www.warcraftlogs.com/*"
+        ]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  }
+  
