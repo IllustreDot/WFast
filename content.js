@@ -14,7 +14,7 @@ function to_rio(currentUrl) {
         newUrl = new URL("https://raider.io/characters/");
     }
     else if (pathSegments[1] === "guilds" || pathSegments[1] === "guild") {
-        if (character.includes("+")){
+        while (character.includes("+")){
             character = character.replace("+", "%20");
         }
         newUrl = new URL("https://raider.io/guilds/");
@@ -37,7 +37,7 @@ function to_wlog(currentUrl) {
         newUrl = new URL("https://www.warcraftlogs.com/character/");
     }
     else if (pathSegments[1] === "guild" || pathSegments[1] === "guilds") {
-        if (character.includes("+")){
+        while (character.includes("+")){
             character = character.replace("+", "%20");
         }
         newUrl = new URL("https://www.warcraftlogs.com/guild/");
@@ -60,7 +60,7 @@ function to_wowprogress(currentUrl) {
         newUrl = new URL("https://www.wowprogress.com/character/");
     }
     else if (pathSegments[1] === "guild" || pathSegments[1] === "guilds") {
-        if (character.includes("+")){
+        while (character.includes("+")){
             character = character.replace("+", "%20");
         }
         newUrl = new URL("https://www.wowprogress.com/guild/");
