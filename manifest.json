@@ -1,48 +1,53 @@
 {
-    "manifest_version": 3,
-    "name": "WoW.Fast",
-    "version": "1.0",
-    "description": "Switch from R.io, WCL & WoWProgress in a click for a character",
-    "permissions": [
-      "activeTab",
-      "scripting"
-    ],
-    "host_permissions": [
-      "*://*.wowprogress.com/character*",
-      "*://raider.io/characters*",
-      "*://www.warcraftlogs.com/character*"
-    ],
-    "content_scripts": [
-      {
-        "matches": [
-          "*://www.wowprogress.com/character*",
-          "*://raider.io/characters*",
-          "*://www.warcraftlogs.com/character*"
-        ],
-        "js": ["content.js"]
-      }
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": [
-          "rio.png",
-          "wlog.png",
-          "wowprogress.png"
-        ],
-        "matches": [
-          "https://www.wowprogress.com/*",
-          "https://raider.io/*",
-          "https://www.warcraftlogs.com/*"
-        ]
-      }
-    ],
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "icons": {
-      "16": "icon.png",
-      "48": "icon.png",
-      "128": "icon.png"
+  "manifest_version": 3,
+  "name": "Wfast",
+  "version": "1.1",
+  "description": "Switch from R.io, WCL & WoWProgress in a click for a character or a guild",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.wowprogress.com/ *",
+    "*://raider.io/*",
+    "*://www.warcraftlogs.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.wowprogress.com/*",
+        "*://raider.io/*",
+        "*://www.warcraftlogs.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "rio.png",
+        "wlog.png",
+        "wowprogress.png"
+      ],
+      "matches": [
+        "https://www.wowprogress.com/*",
+        "https://raider.io/*",
+        "https://www.warcraftlogs.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "illustrerin@gmail.com"
     }
   }
+}
   
