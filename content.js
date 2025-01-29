@@ -14,9 +14,7 @@ function to_rio(currentUrl) {
         newUrl = new URL("https://raider.io/characters/");
     }
     else if (pathSegments[1] === "guilds" || pathSegments[1] === "guild") {
-        while (character.includes("+")){
-            character = character.replace("+", "%20");
-        }
+        character = character.replaceAll("+", "%20");
         newUrl = new URL("https://raider.io/guilds/");
     }
 
@@ -37,9 +35,7 @@ function to_wlog(currentUrl) {
         newUrl = new URL("https://www.warcraftlogs.com/character/");
     }
     else if (pathSegments[1] === "guild" || pathSegments[1] === "guilds") {
-        while (character.includes("+")){
-            character = character.replace("+", "%20");
-        }
+        character = character.replaceAll("+", "%20");
         newUrl = new URL("https://www.warcraftlogs.com/guild/");
     }
 
@@ -60,9 +56,7 @@ function to_wowprogress(currentUrl) {
         newUrl = new URL("https://www.wowprogress.com/character/");
     }
     else if (pathSegments[1] === "guild" || pathSegments[1] === "guilds") {
-        while (character.includes("+")){
-            character = character.replace("+", "%20");
-        }
+        character = character.replaceAll("+", "%20");
         newUrl = new URL("https://www.wowprogress.com/guild/");
     }
 
@@ -98,28 +92,53 @@ function createButton(imageSrc, position, targetUrl) {
 
     document.body.appendChild(button);
 }
+function updateScript() {
+    //============================================================================//
+    //=========================== WOWPROGRESS ====================================//
+    //============================================================================//
+    if (window.location.href.includes("www.wowprogress.com")) {
+        if(typeof rioButton !== "undefined" )
+            rioButton.remove();
+        rioButton=createButton("rio.png", {id: 'rioButton',bottom: "20px", right: "20px", backgroundColor: "#28a745"}, to_rio(window.location.href));
+        if(typeof wlogButton !== "undefined")
+            wlogButton.remove();
+        wlogButton=createButton("wlog.png", {id:'wlogButton',bottom: "20px", right: "150px", backgroundColor: "#007bff"}, to_wlog(window.location.href));
+    }
 
-//============================================================================//
-//=========================== WOWPROGRESS ====================================//
-//============================================================================//
-if (window.location.href.includes("www.wowprogress.com")) {
-    console.log("WOWPROGRESS");
-    createButton("rio.png", {bottom: "20px", right: "20px", backgroundColor: "#28a745"}, to_rio(window.location.href));
-    createButton("wlog.png", {bottom: "20px", right: "150px", backgroundColor: "#007bff"}, to_wlog(window.location.href));
-}
+    //============================================================================//
+    //=========================== Raider.io ======================================//
+    //============================================================================//
+    if (window.location.href.includes("raider.io")) {
+        if (typeof wowprogButton !== "undefined")
+            wowprogButton.remove();
+        wowprogButton=createButton("wowprogress.png", {id: 'wowprogress',bottom: "20px", right: "20px", backgroundColor: "#28a745"}, to_wowprogress(window.location.href));
+        if (typeof wlogButton !== "undefined")
+            wlogButton.remove();
+        wlogButton=createButton("wlog.png", {id: 'wlog',bottom: "20px", right: "150px", backgroundColor: "#007bff"}, to_wlog(window.location.href));
+    }
 
-//============================================================================//
-//=========================== Raider.io ======================================//
-//============================================================================//
-if (window.location.href.includes("raider.io")) {
-    createButton("wowprogress.png", {bottom: "20px", right: "20px", backgroundColor: "#28a745"}, to_wowprogress(window.location.href));
-    createButton("wlog.png", {bottom: "20px", right: "150px", backgroundColor: "#007bff"}, to_wlog(window.location.href));
+    //============================================================================//
+    //=========================== WarcraftLog ====================================//
+    //============================================================================//
+    if (window.location.href.includes("www.warcraftlogs.com")) {
+        if (typeof wowprogButton !== "undefined")
+            wowprogButton.remove();
+        wowprogButton=createButton("wowprogress.png", {bottom: "20px", right: "20px", backgroundColor: "#28a745"}, to_wowprogress(window.location.href));
+        if (typeof rioButton !== "undefined")
+            rioButton.remove();
+        rioButton=createButton("rio.png", {bottom: "20px", right: "150px", backgroundColor: "#007bff"}, to_rio(window.location.href));
+    }
 }
+//============================================================================//
+//=========================== FIX URL ========================================//
+//============================================================================//
+let lastUrl = location.href;
+setInterval(() => {
+    if (location.href !== lastUrl) {
+        lastUrl = location.href;
+        console.log("Detected URL change!");
+        updateScript(); // Call your function to refresh content
+    }
+}, 50); // Check every 50ms
 
-//============================================================================//
-//=========================== WarcraftLog ====================================//
-//============================================================================//
-if (window.location.href.includes("www.warcraftlogs.com")) {
-    createButton("wowprogress.png", {bottom: "20px", right: "20px", backgroundColor: "#28a745"}, to_wowprogress(window.location.href));
-    createButton("rio.png", {bottom: "20px", right: "150px", backgroundColor: "#007bff"}, to_rio(window.location.href));
-}
+updateScript();
