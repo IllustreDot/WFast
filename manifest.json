@@ -8,16 +8,16 @@
     "scripting"
   ],
   "host_permissions": [
-    "*://*.wowprogress.com/ *",
-    "*://raider.io/*",
-    "*://www.warcraftlogs.com/*"
+    "https://www.wowprogress.com/*",
+    "https://raider.io/*",
+    "https://www.warcraftlogs.com/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "*://www.wowprogress.com/*",
-        "*://raider.io/*",
-        "*://www.warcraftlogs.com/*"
+        "https://www.wowprogress.com/*",
+        "https://raider.io/*",
+        "https://www.warcraftlogs.com/*"
       ],
       "js": ["content.js"]
     }
