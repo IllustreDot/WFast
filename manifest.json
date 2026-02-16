@@ -3,15 +3,17 @@
   "name": "Wfast",
   "version": "1.1",
   "description": "Switch from R.io, WCL & WoWProgress in a click for a character or a guild",
+
   "permissions": [
-    "activeTab",
-    "scripting"
+    "activeTab"
   ],
+
   "host_permissions": [
     "https://www.wowprogress.com/*",
     "https://raider.io/*",
     "https://www.warcraftlogs.com/*"
   ],
+
   "content_scripts": [
     {
       "matches": [
@@ -19,15 +21,16 @@
         "https://raider.io/*",
         "https://www.warcraftlogs.com/*"
       ],
-      "js": ["content.js"]
+      "js": ["src/main.js"]
     }
   ],
+
   "web_accessible_resources": [
     {
       "resources": [
-        "rio.png",
-        "wlog.png",
-        "wowprogress.png"
+        "assets/rio.png",
+        "assets/wlog.png",
+        "assets/wowprogress.png"
       ],
       "matches": [
         "https://www.wowprogress.com/*",
@@ -36,18 +39,15 @@
       ]
     }
   ],
+
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "assets/icon.png"
   },
+
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "illustrerin@gmail.com"
-    }
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
   }
 }
-  
