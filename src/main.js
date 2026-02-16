@@ -19,6 +19,7 @@ const WF = (() => {
 
     const qs = (s, r = document) => r.querySelector(s);
     const qsa = (s, r = document) => [...r.querySelectorAll(s)];
+    const api = browser || chrome;
 
     const waitFor = (selector) => new Promise(resolve => {
         const el = qs(selector);
@@ -128,7 +129,7 @@ const WF = (() => {
         a.style.marginLeft = size + "px";
 
         const img = document.createElement("img");
-        img.src = browser.runtime.getURL(icon);
+        img.src = api.runtime.getURL(icon);
         img.width = size;
         img.height = size;
 
